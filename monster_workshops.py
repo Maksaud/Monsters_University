@@ -4,7 +4,7 @@ class MonsterWorkshop():
         self.teacher = teacher
         self.list_attendees = []
 
-
+    # Organising the workshop
     def set_workshops(self):
         the_workshop = []
         the_workshop.append(self.subject)
