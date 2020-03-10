@@ -34,46 +34,45 @@ user_input = ""
 database = {'Workshops':{}}
 id = 0
 
+# Switch board
 while user_input != 'quit':
     user_input = input("If you want to add a student or teacher type: add \n if you want to add a subject type: subject \n if you want to add a skill: skill \n if you want to print everything: print\n if you want to quit: quit \n")
 
-    # Adding either a student or teacher
+    # adding either student or teacher
     if user_input == 'add':
         student_or_teach = input('input a student or teacher ')
 
-        # Creating a student object and adding it into a dictionary
+        # creating a student object and added to dictinary
         if student_or_teach == 'student':
-            student = Student(input('Enter the students first name '), input('Enter students last name '), id)
-            database[str(id)] = [student.f_name, student.l_name, student.student_id]
-            print(student.f_name + ' ' + student.l_name + 'is added and id is: ' + str(student.student_id))
+            database[str(id)] = Student(input('Enter the students first name '), input('Enter students last name '), id)
+            print(database[str(id)].f_name, database[str(id)].l_name + 'is added and id is: ' + str(database[str(id)].student_id))
             id += 1
 
-        # Creating a teacher object and and adding it into a dictionary
+        # creating a teacher object and adding to the dictionary
         elif student_or_teach == 'teacher':
-            teacher = Teacher(input('Enter the teachers first name '), input('Enter the teachers last name '), id)
-            database[str(id)] = [[student.f_name, student.l_name, student.student_id]]
-            print(teacher.f_name + ' ' + teacher.l_name + ' is added and id is: ' + str(teacher.student_id))
+            database[str(id)] = Teacher(input('Enter the teachers first name '), input('Enter the teachers last name '), id)
+            print(database[str(id)].f_name, database[str(id)].l_name + 'is added and id is: ' + str(database[str(id)].staff_id))
             id += 1
 
         else:
-            break
+            user_input = 'quit'
 
-    # Adding a subject
+    # creating a subject and adding it to the dictionary
     elif user_input == 'subject':
         workshop = MonsterWorkshop(input('Enter the subject name '), input('Enter teacher name '))
         database["Workshops"][workshop.subject] = workshop.teacher
         print(database["Workshops"])
 
-    # Adding skills into a monster
+    # adding skill
     elif user_input == 'skill':
         skill_input = input('Enter a skill ')
         which_id = int(input("which id do you want to change "))
         database[str(which_id)].skills.append(skill_input)
         print(database[str(which_id)].f_name, database[str(which_id)].skills)
 
-    # Printing the dictionary
+    # print database
     elif user_input == 'print':
         print(database)
 
     else:
-        break
+        user_input='quit'
