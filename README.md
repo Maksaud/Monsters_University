@@ -39,3 +39,13 @@ def set_workshops(self):
       the_workshop.append(self.list_attendees)
       return the_workshop
 ```
+
+# Initialisation
+
+```
+git clone https://github.com/Maksaud/Monsters_University.git
+```
+to run
+```
+python3 run_monsters.py
+```
